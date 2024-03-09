@@ -83,5 +83,11 @@ public class UserController {
         return "userPage";
     }
 
+    @GetMapping("/myCandudatePage")
+    public String myCandudatePage(Model model) {
+        Candidate candidate = candidateService.getMyCandidate(currentUser.getEmail());
+        model.addAttribute("candidate", candidate);
+        return "candidatePage";
+    }
+    
 }
-// System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~!!!!!!!!!!!!!!!!~~~~~~~~~~~~~~~~~~~~~~~~~~");
