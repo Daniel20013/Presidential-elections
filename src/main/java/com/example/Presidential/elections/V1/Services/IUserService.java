@@ -10,4 +10,6 @@ public interface IUserService {
     User getUserById(Long id);
 
     boolean userHasVoted();
+
+    void resetUsers();
 }
