@@ -69,11 +69,4 @@ public class CandidateController {
         return "homeUser";
     }
 
-    @GetMapping("/myCandudatePage")
-    public String myCandudatePage(@RequestParam("email") String email, Model model) {
-        Candidate candidate = candidateService.getMyCandidate(email);
-        model.addAttribute("candidate", candidate);
-        return "candidatePage";
-    }
-
 }
