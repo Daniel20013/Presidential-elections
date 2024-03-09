@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Presidential elections</title>
+    <link th:href="@{/CSS/style.css}" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <h1>Presidential elections</h1>
+                <div id="navBarUser" class="btn-group me-2" role="group" aria-label="First group">
+                    <a th:href="@{/home}" class="btn btn-primary">Home</a>
+                    <a href="/candidates" class="btn btn-primary">Candidates</a>
+                    <form id="logoutForm" action="/logout" method="post">
+                        <button type="submit" class="btn btn-danger">Logout</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="card text-bg-light mb-3" style="position: relative; top: 2rem;">
+            <div class="card-body">
+                <div>
+                    <h3 class="card-title" th:text="${user.firstName + ' ' + user.lastName}"></h3>
+                    <a id="buttonRegisterCandidacy" class="btn btn-primary" href="/registerCandidateTable">Submit your candidacy</a>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="card" style="float: right;">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item" th:text="'Email adress: ' + ${user.email}"></li>
+                            <li class="list-group-item" th:text="'Domicile: ' + ${user.adress}"></li>
+                            <li class="list-group-item" th:text="'Age: ' + ${user.age}"></li>
+                            <li class="list-group-item" th:text="'A short description: ' + ${user.shortDescription}"></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>

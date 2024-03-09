@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Presidential elections</title>
+  <link th:href="@{/CSS/style.css}" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="card-body">
+        <h1>Presidential elections</h1>
+        <a href="/" >
+          <button id="registerBackHome" type="button" class="btn btn-primary">Back</button>
+        </a>
+      </div>
+    </div>
+    <div class="card text-bg-light mb-3">
+      <div class="card-header">Register</div>
+      <div class="card-body">
+        <form th:action="@{/registerCandidate}" method="POST">
+          <input id="firstNameC" type="text" name="firstName" class="form-control" placeholder="First name">
+          <input id="lastNameC" type="text" name="lastName" class="form-control" placeholder="Last name">
+          <input id="citizenshipC" type="text" name="citizenship" class="form-control" placeholder="You must be a Romana citizen.">
+          <input id="adressC" type="text" name="adress" class="form-control" placeholder="Adress">
+          <input id="emailC" type="text" name="email" class="form-control" placeholder="Enter the same email address from the user account (only emails from google (@gmail.com) or yahoo (@yahoo.com) are accepted)">
+          <input id="ageC" type="text" name="age" class="form-control" placeholder="Enter your age">
+          <input id="shortDescriptionC" type="text" name="shortDescription" class="form-control" placeholder="Description, link">
+          <button class="btn btn-primary" onclick="dateForSubApplications(event)">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+<script type="text/javascript" th:src="@{/JS/candidate.js}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
