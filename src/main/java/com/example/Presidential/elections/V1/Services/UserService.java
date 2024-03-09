@@ -5,6 +5,7 @@ import com.example.Presidential.elections.V1.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import java.util.List;
 
 @Service
 public class UserService implements IUserService {
@@ -55,6 +56,15 @@ public class UserService implements IUserService {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public void resetUsers() {
+        List<User> users = userRepository.findAll();
+        for (User user : users) {
+            user.setVote(true);
+            userRepository.save(user);
+        }
     }
 
 }
