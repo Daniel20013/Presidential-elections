@@ -5,9 +5,6 @@ import com.example.Presidential.elections.V1.Repository.CandidateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -19,7 +16,8 @@ public class CandidateService implements ICandidateService {
         return candidateRepository;
     }
 
-    public boolean validateCandidate (Candidate candidate) {
+    @Override
+    public boolean validateCandidate(Candidate candidate) {
         int minAge = 35;
         if (candidate.getAge() < minAge) {
             return false;
@@ -50,6 +48,7 @@ public class CandidateService implements ICandidateService {
         return candidateRepository.findByEmail(email);
     }
 
+    @Override
     public void candidateWasVoted(Candidate candidate) {
         int nrOfVotes = candidate.getNrOfVotes();
         ++nrOfVotes;
@@ -57,10 +56,25 @@ public class CandidateService implements ICandidateService {
         candidateRepository.save(candidate);
     }
 
+    @Override
     public List<Candidate> rankingOfCandidates() {
         return candidateRepository.findAll(Sort.by(Sort.Direction.DESC, "nrOfVotes"));
     }
 
+    @Override
+    public void deleteCandidates() {
+        candidateRepository.deleteAll();
+    }
 
+    @Override
+    public void topTwoCandidates() {
+        List<Candidate> allCandidates = candidateRepository.findAll(Sort.by(Sort.Direction.DESC, "nrOfVotes"));
+        List<Candidate> candidates = allCandidates.subList(0, Math.min(2, allCandidates.size()));
+        candidateRepository.deleteAll();
+        for (Candidate candidate : candidates) {
+            candidate.setNrOfVotes(0);
+            candidateRepository.save(candidate);
+        }
+    }
 
 }
