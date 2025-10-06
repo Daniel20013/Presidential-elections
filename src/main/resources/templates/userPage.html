@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>User Page</title>
+</head>
+<body>
+<h2>Welcome, <span th:text="${user.username}">username</span>!</h2>
+
+<ul>
+  <li>First Name: <b th:text="${user.firstName}">firstName</b></li>
+  <li>Last Name: <b th:text="${user.lastName}">lastName</b></li>
+  <li>Date of Birth: <b th:text="${user.dateOfBirth}">dateOfBirth</b></li>
+  <li>Short Description: <b th:text="${user.shortDescription}">description</b></li>
+  <li>Vote: <b th:text="${user.vote}">vote</b></li>
+  <li>Candidate: <b th:text="${user.candidate}">candidate</b></li>
+</ul>
+
+<form th:action="@{/logout}" method="post">
+  <button type="submit">Logout</button>
+</form>
+</body>
+</html>
