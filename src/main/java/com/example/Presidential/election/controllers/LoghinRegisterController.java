@@ -28,16 +28,9 @@ public class LoghinRegisterController {
     @GetMapping("/")
     public String rootRedirect(Authentication auth) {
         if (auth != null) {
-            for (GrantedAuthority authority : auth.getAuthorities()) {
-                String role = authority.getAuthority();
-                if (role.equals("ROLE_ADMIN")) {
-                    return "redirect:/admin/home";
-                } else if (role.equals("ROLE_USER")) {
-                    return "redirect:/user/home";
-                }
-            }
+            return "redirect:/user/home";
         }
-        return "redirect:/home";
+        return "redirect:/logim";
     }
 
     @GetMapping("/register")
@@ -69,3 +62,4 @@ public class LoghinRegisterController {
         return "redirect:/login?registered";
     }
 }
+
